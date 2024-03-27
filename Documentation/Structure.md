@@ -8,13 +8,13 @@ Carpetas principales del repositorio:
 
 Árbol general:
 
-&emsp;&emsp;Main
+&emsp;&emsp;/Main
 
 &emsp;&emsp;&emsp;&emsp;/img
 
 &emsp;&emsp;&emsp;&emsp;index.html
 
-&emsp;&emsp;Documentation
+&emsp;&emsp;/Documentation
 
 &emsp;&emsp;&emsp;&emsp;Structure.md
 	
@@ -22,7 +22,7 @@ Carpetas principales del repositorio:
 
 &emsp;&emsp;&emsp;&emsp;Ideas.md
 	
-&emsp;&emsp;Other
+&emsp;&emsp;/Other
 
 &emsp;&emsp;&emsp;&emsp;/img
 
