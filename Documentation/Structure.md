@@ -1,10 +1,10 @@
 Carpetas principales del repositorio:
 
-&emsp;&emsp;- Main: El proyecto en sí.
+- Main: El proyecto en sí.
 
-&emsp;&emsp;- Documentation: Documentación.
+- Documentation: Documentación.
 
-&emsp;&emsp;- Other: Otros archivos, como imágenes crudas.
+- Other: Otros archivos, como imágenes crudas.
 
 Árbol general:
 
