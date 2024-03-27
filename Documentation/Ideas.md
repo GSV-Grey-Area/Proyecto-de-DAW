@@ -26,7 +26,7 @@ Gets information from XML or similar and makes a Canvas graph (Common system for
 ![Imagen](../Other/img/scheme001.png?raw=true)
 
 Concepto (v0, 2024-01-26):
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Imagen](../Other/img/scheme002.png?raw=true)
+![Imagen](../Other/img/scheme002.png?raw=true)
 
 Esquema (v0, 2024-01-26):
 ![Imagen](../Other/img/scheme003.png?raw=true)
