@@ -30,3 +30,9 @@ Concepto (v0, 2024-01-26):
 
 Esquema (v0, 2024-01-26):
 ![Imagen](../Other/img/scheme003.png?raw=true)
+
+Esquema (v1, 2024-02-XX):
+![Imagen](../Other/img/20240329_010854.jpg?raw=true)
+
+Dibujo sobre una parte del funcionamiento:
+![Imagen](../Other/img/20240329_010911.jpg?raw=true)
