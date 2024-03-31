@@ -1,6 +1,6 @@
 
 # Ideas
-Masked text with background image
+Texto con fondo de máscara para los títulos que utilizará imágenes relacionadas:
 ![Imagen](../Other/img/Test.png?raw=true)
 
 Background with random noise (CSS gradient trick?), or possibly for masked text as well...
@@ -28,11 +28,8 @@ Gets information from XML or similar and makes a Canvas graph (Common system for
 Concepto (v0, 2024-01-26):
 ![Imagen](../Other/img/scheme002.png?raw=true)
 
-Esquema (v0, 2024-01-26):
-![Imagen](../Other/img/scheme003.png?raw=true)
-
-Esquema (v1, 2024-02-XX):
-![Imagen](../Other/img/20240329_010854.jpg?raw=true)
+Esquema (v4, 2024-03-31):
+![Imagen](../Other/img/scheme004.png?raw=true)
 
 Dibujo sobre una parte del funcionamiento:
 ![Imagen](../Other/img/20240329_010911.jpg?raw=true)
