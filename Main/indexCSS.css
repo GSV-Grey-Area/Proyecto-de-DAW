@@ -1,0 +1,31 @@
+/*Body*/
+body
+{
+    margin: 0;
+    padding: 0;
+}
+/*Header*/
+header
+{
+    margin-top: 1%;
+}
+#Menu
+{
+    align-content: center;
+}
+ul
+{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+li a
+{
+    text-decoration: none;
+    color: black;
+}
+#logo
+{
+    margin-left: 10%;
+}
