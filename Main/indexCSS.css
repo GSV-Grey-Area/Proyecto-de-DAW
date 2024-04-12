@@ -4,6 +4,26 @@ body
     margin: 0;
     padding: 0;
 }
+#Categorias
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 5%;
+}
+#Caja
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding:1%;
+}
+#Nombre_Categoria
+{
+    font-size: 25px;
+}
 /*Header*/
 header
 {
