@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#test
+			{
+				position: relative;
+				animation-name: example;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes example
+			{
+				0% {left: 0px;}
+				50% {left: 1000px;}
+				100% {left: 0px;}
+			}
+			
+			.testDiv
+			{
+				display: inline-block;
+				
+				
+				
+				
+				background-color: #FF0000;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="testDiv" style="-webkit-mask:url(1.svg);">
+			<img id="test" src="1.png" style="height: 250px; width: 1500px; object-fit: cover;">
+		</div>
+		<img src="1.svg">
+	</body>
+</html>

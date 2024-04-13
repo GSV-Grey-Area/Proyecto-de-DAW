@@ -1,0 +1,9 @@
+<svg width="2766" height="250" xmlns="http://www.w3.org/2000/svg" style="outline: 1px solid red">
+	<defs>
+		<mask id="text-mask-1" x="0" y="0" width="2766" height="250" >
+			<text x="30" y="240" font-family="Helvetica" font-weight="bold" font-size="20em" fill="#999">Test mask</text>
+		</mask>
+	</defs>
+	
+	<image width="2766" height="1836" href="1.png" mask="url(#text-mask-1)"/>
+</svg>
