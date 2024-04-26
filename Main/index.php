@@ -18,10 +18,12 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
             <hr>
             <div id="Menu">
                 <ul>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="">Ayuda</a></li>
                     <li><a href="">Info</a></li>
                     <li><a href="">Cuenta</a></li>
                     <li><a href="">Cesta</a></li>
+                    <li><a href="Admin.php">Admin</a></li>
                 </ul>
             </div>
             <hr>
@@ -30,8 +32,8 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
             <?php
                 while($row = $resultado->fetch_assoc())
                 {
-                    echo "<div id='Caja'>";
-                    echo "<img id='Imagen' src='data:image/jpeg;base64," . base64_encode($row['Imagen']) . "'width=300px height=200px alt='Producto'>";
+                    echo "<div id='Caja' onclick='SeleccionarCategoria(".$row['ID'].")'>";
+                    echo "<img id='Imagen' src='data:image/jpeg;base64," . $row['Imagen'] . "'width=250px height=200px alt='Producto'>";
                     echo "<p id='Nombre_Categoria'>".$row["Nombre"]."</p>";
                     echo "</div>";
                 }
@@ -39,3 +41,4 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
         </div>
 	</body>
 </html>
+<script src="./JavaScript.js"></script>
