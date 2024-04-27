@@ -14,13 +14,13 @@ require "AccessDB.php";
         function AgregarCategoria()
         {
             var form_data = new FormData();
-            form_data.append('Categoria', document.getElementById("Categoria").value);
+            form_data.append('Tipo', document.getElementById("Categoria").value);
             form_data.append('Nombre', document.getElementById("Nombre").value);
             form_data.append('Imagen', document.getElementById("Imagen").files[0]);
             form_data.append('Imagen_Categoria', document.getElementById("Imagen_Categoria").files[0]);
 
             var datos = {
-                Categoria: Categoria,
+                Tipo: Categoria,
                 Nombre: Nombre,
                 Imagen: Imagen,
                 Imagen_Categoria: Imagen_Categoria
@@ -39,42 +39,31 @@ require "AccessDB.php";
             error: function (error) {
                 console.error("Error en la solicitud AJAX:", error);
             }
-    });
-
-        }
-        /*
-        Funcion para enviar datos por AJAX al fichero Access.php
-        function AgregarCategoria()
-        {
-            var Categoria = document.getElementById("Categoria").value;
-            var Nombre = document.getElementById("Nombre").value;
-            var Imagen = document.getElementById("Imagen").value;
-            var Imagen_Categoria = document.getElementById("Imagen_Categoria").value;
-
-            var datos = {
-                Categoria: Categoria,
-                Nombre: Nombre,
-                Imagen: Imagen,
-                Imagen_Categoria: Imagen_Categoria
-            };
-            
-            $.ajax({
-                url:'AccessDB.php',
-                type:'POST',
-                dataType:'json',
-                data: {datos: JSON.stringify(datos)},
-                success: function(data){
-                    console.log(data);
-                    var Bien = document.getElementById("Bien").hidden = false;
-                    
-                },
-                error: function(error){
-                    console.error("Error en la solicitud AJAX:", error);
-                }
             });
 
         }
-        */
+
+        function BuscarCategoria()
+        {
+            var form_data = new FormData();
+            form_data.append('Tipo', document.getElementById('Buscar_Categoria').value);
+            form_data.append('Nombre_Categoria', document.getElementById('Nombre_Buscar_Categoria').value);
+            console.log(form_data);
+            
+            $.ajax({
+            url: 'AccessDB.php',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: form_data,
+            success: function (data) {
+                
+            }
+            });
+            error: function error(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", error);
+            }
+        }
     </script>
 </head>
 <body>
@@ -111,6 +100,16 @@ require "AccessDB.php";
     </form>
         <p id="Bien" hidden>Se ha añadido la categoria correctamente</p>
         <p id="Mal" hidden>Ha ocurrido un error al añadir la categoria</p>
-    
+
+    <form id="FormularioCategoria" action="AccessDB.php" method="POST">
+        <input type="hidden" id="Buscar_Categoria" name="Tipo" value="Buscar_Categoria">
+        <h1>Buscar Categoria</h1>
+        <label for="Nombre">Nombre Categoria</label>
+        <input type="text" id="Nombre_Buscar_Categoria" name="Nombre_Buscar_Categoria" required>
+        <button onclick="BuscarCategoria()">Buscar Categoria</button>
+    </form>
+    <div class="resultados_busqueda" id="resultados_busqueda">
+
+    </div>
     </body>
 </html>

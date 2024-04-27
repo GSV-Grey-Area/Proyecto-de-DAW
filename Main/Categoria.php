@@ -1,12 +1,10 @@
 <?php
 
-require "AccessDB.php";
-
-//Recoge el ID de la categoria seleccionada.
-if(isset($_GET['categoriaID'])) {
-    $categoriaID = $_GET['categoriaID'];
-    echo $categoriaID;
+// Recoge el ID de la categoría seleccionada.
+if(isset($_GET['id'])) { // Cambiado 'ID' a 'id'
+    $categoriaID = $_GET['id']; // Cambiado 'ID' a 'id'
+    echo "ID de la categoria es:  ".$categoriaID;
 } else {
-    console.log("No se ha mandado la categoria.");
+    echo "No ha llegado el ID";
 }
 ?>

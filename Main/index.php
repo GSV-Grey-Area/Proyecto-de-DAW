@@ -9,9 +9,16 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
 		<title>Aquí empieza el proyecto...</title>
 		<link rel="icon" type="image/x-icon" href="img/logo16.png">
         <link rel="stylesheet" href="CSSindex.css">
+        <script>
+
+        function SeleccionarCategoria(ID)
+        {
+            location.href ="Categoria.php?id=" + ID;
+        }
+        </script>
 	</head>
 	<body>
-		<header>
+		<header>    
             <div id="logo">
                 <img src="./img/logo128.png" alt="logo">
             </div>
@@ -41,4 +48,3 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
         </div>
 	</body>
 </html>
-<script src="./JavaScript.js"></script>
