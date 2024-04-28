@@ -64,6 +64,29 @@ require "AccessDB.php";
                 console.error("Error en la solicitud AJAX:", error);
             }
         }
+
+        function EliminarCategoria() {
+
+            var form_data = new FormData();
+            form_data.append('Tipo', document.getElementById('Eliminar_Categoria').value);
+            form_data.append('Eliminar_Categoria', document.getElementById('Eliminar_Nombre_Categoria').value);
+
+            $.ajax({
+                url: 'AccessDB.php',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                data: form_data,
+                success: function(data){
+
+                }
+ 
+            })
+            error: function error(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", error);
+            }
+            
+        }
     </script>
 </head>
 <body>
@@ -108,8 +131,12 @@ require "AccessDB.php";
         <input type="text" id="Nombre_Buscar_Categoria" name="Nombre_Buscar_Categoria" required>
         <button onclick="BuscarCategoria()">Buscar Categoria</button>
     </form>
-    <div class="resultados_busqueda" id="resultados_busqueda">
 
-    </div>
+    <form id="FormularioCategoria">
+        <input type="hidden" id="Eliminar_Categoria" name="Tipo" value="Eliminar_Categoria">
+        <h1>Eliminar Categoria</h1>
+        <input type="text" name="Eliminar_Nombre_Categoria" id="Eliminar_Nombre_Categoria">
+        <button type="submit" onclick="EliminarCategoria()">Eliminar Categoria</button>
+    </form>
     </body>
 </html>

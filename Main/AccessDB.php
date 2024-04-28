@@ -63,10 +63,11 @@ if(isset($_POST['Tipo'])) {
                 echo "</div>";
             }
             break;
-        // Agregar más casos según sea necesario
+        case 'Eliminar_Categoria':
+            $nombre = $_POST['Eliminar_Categoria'];
+            EliminarCategoria($nombre,$server, $dbname, $usuario, $password, $table);
+            break;
         default:
-            // Si el valor no coincide con ninguno de los casos anteriores
-            // Aquí puedes manejar el caso por defecto o lanzar un error
             break;
     }
 }
@@ -128,6 +129,25 @@ function BuscarCategoria($nombre, $server, $dbname, $usuario, $password, $table)
     // Devolver el array de categorías
     return $categorias;
 }
-//$nombre = 'Procesadores';
-//BuscarCategoria($nombre, $server, $dbname, $usuario, $password, $table);
+
+function EliminarCategoria($nombre, $server, $dbname, $usuario, $password, $table)
+{
+    $conn = new mysqli($server, $usuario, $password, $dbname);
+
+    if ($conn->connect_error) {
+        return array('error' => "Error de conexión: " . $conn->connect_error);
+    }
+
+    $sql = "DELETE FROM $table WHERE Nombre = '$nombre'";
+
+    if ($conn->query($sql) === TRUE) {
+        // La eliminación se realizó con éxito
+        $conn->close();
+        return array('success' => "Se eliminó la categoría correctamente.");
+    } else {
+        // Error al ejecutar la consulta SQL
+        $conn->close();
+        return array('error' => "Error al eliminar la categoría: " . $conn->error);
+    }
+}
 ?>
