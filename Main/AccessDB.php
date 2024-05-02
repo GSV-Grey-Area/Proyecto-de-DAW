@@ -8,6 +8,7 @@ $dbname = $config['dbname'];
 $table = $config['table'];
 $usuario = $config['usuario'];
 $password = $config['password'];
+$productos = $config['productos'];
 
 //Funcion para leer las categorias para la pagina HOME
 function Read($server,$dbname,$usuario,$password,$table)
@@ -66,6 +67,15 @@ if(isset($_POST['Tipo'])) {
         case 'Eliminar_Categoria':
             $nombre = $_POST['Eliminar_Categoria'];
             EliminarCategoria($nombre,$server, $dbname, $usuario, $password, $table);
+            break;
+
+        case 'Insertar_Producto':
+            $categoria_producto = $_POST['Nombre_Categoria_Producto'];
+            $nombre_producto = $_POST['Nombre_Producto'];
+            $imagen_producto = $_FILES['Imagen_Producto']["name"];
+            $precio_producto = $_POST['Precio_Producto'];
+            $descripcion_producto = $_POST['Descripcion_Producto'];
+            InsertarProducto($categoria_producto, $nombre_producto, $imagen_producto, $precio_producto, $descripcion_producto, $server, $dbname, $usuario, $password, $productos);
             break;
         default:
             break;
@@ -149,5 +159,48 @@ function EliminarCategoria($nombre, $server, $dbname, $usuario, $password, $tabl
         $conn->close();
         return array('error' => "Error al eliminar la categoría: " . $conn->error);
     }
+}
+
+//Funcion para leer los productos por su Categoria
+function LeerProductoPorCategoria($categoria,$server, $dbname, $usuario, $password, $productos)
+{
+    $conn = new mysqli($server, $usuario, $password, $dbname);
+
+    if ($conn->connect_error) {
+        return array('error' => "Error de conexión: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM $productos WHERE Categoria = '$categoria'";
+
+    $resultado = mysqli_query($conn,$sql);
+
+    if (!$resultado) {
+        printf("Error en la consulta: %s\n", mysqli_error($conn));
+        exit();
+    }
+    
+    mysqli_close($conn);
+    return $resultado;
+}
+
+function InsertarProducto($categoria_producto, $nombre_producto, $imagen_producto, $precio_producto, $descripcion_producto, $server, $dbname, $usuario, $password, $productos)
+{
+    $conn = new mysqli($server, $usuario, $password, $dbname);
+
+    if ($conn->connect_error) {
+        return array('error' => "Error de conexión: " . $conn->connect_error);
+    }
+
+    $imagen_codificada = base64_encode(file_get_contents("./img/".$imagen_producto));
+
+    $sql = "INSERT INTO $productos (Categoria, Nombre, Imagen, Precio, Descripcion) VALUES ('$categoria_producto', '$nombre_producto', '$imagen_codificada', '$precio_producto', '$descripcion_producto')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Categoría insertada correctamente.";
+    } else {
+        echo "Error al insertar la categoría: " . mysqli_error($conn);
+    }
+    
+    mysqli_close($conn);
 }
 ?>

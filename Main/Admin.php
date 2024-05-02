@@ -85,7 +85,31 @@ require "AccessDB.php";
             error: function error(xhr, status, error) {
                 console.error("Error en la solicitud AJAX:", error);
             }
-            
+        }
+
+        function InsertarProducto()
+        {
+            var form_data = new FormData();
+            form_data.append('Tipo', document.getElementById('Insertar_Producto').value);
+            form_data.append('Nombre_Categoria_Producto', document.getElementById('Nombre_Categoria_Producto').value);
+            form_data.append('Nombre_Producto', document.getElementById('Nombre_Producto').value);
+            form_data.append('Imagen_Producto', document.getElementById('Imagen_Producto').files[0]);
+            form_data.append('Precio_Producto', document.getElementById('Precio_Producto').value);
+            form_data.append('Descripcion_Producto', document.getElementById('Descripcion_Producto').value);
+
+            $.ajax({
+                url: 'AccessDB.php',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                data: form_data,
+                success: function(data){
+
+                }
+            })
+            error: function error(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", error);
+            }
         }
     </script>
 </head>
@@ -135,8 +159,31 @@ require "AccessDB.php";
     <form id="FormularioCategoria">
         <input type="hidden" id="Eliminar_Categoria" name="Tipo" value="Eliminar_Categoria">
         <h1>Eliminar Categoria</h1>
+        <label for="Eliminar_Nombre_Categoria">Nombre de Categoria a Eliminar</label>
         <input type="text" name="Eliminar_Nombre_Categoria" id="Eliminar_Nombre_Categoria">
         <button type="submit" onclick="EliminarCategoria()">Eliminar Categoria</button>
+    </form>
+
+    <form id="FormularioCategoria" >
+        <input type="hidden" id="Insertar_Producto" name="Tipo" value="Insertar_Producto">
+        <h1>Insertar Producto</h1>
+
+        <label for="Nombre_Categoria_Producto">Categoria</label>
+        <input type="text" name="Nombre_Categoria_Producto" id="Nombre_Categoria_Producto">
+
+        <label for="Nombre_Producto">Nombre Producto</label>
+        <input type="text" name="Nombre_Producto" id="Nombre_Producto">
+
+        <label for="Imagen_Producto">Imagen Producto</label>
+        <input type="file" name="Imagen_Producto" id="Imagen_Producto">
+
+        <label for="Precio_Producto">Precio Producto</label>
+        <input type="text" name="Precio_Producto" id="Precio_Producto">
+
+        <label for="Descripcion_Producto">Descripción</label>
+        <input type="text" name="Descripcion_Producto" id="Descripcion_Producto">
+
+        <button onclick="InsertarProducto()">Insertar Producto</button>
     </form>
     </body>
 </html>

@@ -11,9 +11,9 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
         <link rel="stylesheet" href="CSSindex.css">
         <script>
 
-        function SeleccionarCategoria(ID)
+        function SeleccionarCategoria(Nombre)
         {
-            location.href ="Categoria.php?id=" + ID;
+            location.href ="Categoria.php?ID=" + Nombre;
         }
         </script>
 	</head>
@@ -39,7 +39,7 @@ $resultado = Read($server,$dbname,$usuario,$password,$table);
             <?php
                 while($row = $resultado->fetch_assoc())
                 {
-                    echo "<div id='Caja' onclick='SeleccionarCategoria(".$row['ID'].")'>";
+                    echo "<div id='Caja' onclick='SeleccionarCategoria(\"".$row['Nombre']."\")'>";
                     echo "<img id='Imagen' src='data:image/jpeg;base64," . $row['Imagen'] . "'width=250px height=200px alt='Producto'>";
                     echo "<p id='Nombre_Categoria'>".$row["Nombre"]."</p>";
                     echo "</div>";
