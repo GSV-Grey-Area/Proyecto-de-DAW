@@ -77,6 +77,9 @@ if(isset($_POST['Tipo'])) {
             $descripcion_producto = $_POST['Descripcion_Producto'];
             InsertarProducto($categoria_producto, $nombre_producto, $imagen_producto, $precio_producto, $descripcion_producto, $server, $dbname, $usuario, $password, $productos);
             break;
+        case 'LeerProducto':
+            $nombredelproducto = $_POST['Nombre'];
+            break;
         default:
             break;
     }
@@ -202,5 +205,26 @@ function InsertarProducto($categoria_producto, $nombre_producto, $imagen_product
     }
     
     mysqli_close($conn);
+}
+
+function LeerProducto($nombre, $server, $dbname, $usuario, $password, $productos)
+{
+    $conn = new mysqli($server, $usuario, $password, $dbname);
+
+    if ($conn->connect_error) {
+        return array('error' => "Error de conexión: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM $productos WHERE Nombre = '$nombre'";
+
+    $resultado = mysqli_query($conn,$sql);
+
+    if (!$resultado) {
+        printf("Error en la consulta: %s\n", mysqli_error($conn));
+        exit();
+    }
+    
+    mysqli_close($conn);
+    return $resultado;
 }
 ?>

@@ -15,6 +15,12 @@ if(isset($_GET['ID'])) { // Cambiado 'ID' a 'id'
     <link rel="icon" type="image/x-icon" href="img/logo16.png">
     <link rel="stylesheet" href="CSSindex.css">
     <title>Document</title>
+    <script>
+        function SeleccionarProducto(Nombre)
+        {
+            location.href ="Producto.php?Nombre=" + Nombre;
+        }
+    </script>
 </head>
 <body>
     <header>    
