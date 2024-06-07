@@ -42,7 +42,7 @@
 				{
 					echo 'ctx.fillRect(' . $x[$i]*100 . ', ' . $canvasY - $y[$i] - $elementSize + 1 . ', ' . $elementSize . ', ' . $elementSize . ');';
 					echo 'base_image = new Image();';
-					echo 'base_image.src = ';
+					echo 'base_image.src = '';
 					echo '"';
 					if ($i < 11)
 					{

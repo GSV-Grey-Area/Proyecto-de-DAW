@@ -1,0 +1,284 @@
+/* General:																													*/
+						@media screen and (max-width: 600px)
+						{
+							#Menu
+							{
+								padding: 5%;
+								font-size: 20px;
+							}
+						}
+
+						html
+						{
+							background-color: #FFFFFF;
+							/*background-image: linear-gradient(#DDDDDD, #FFFFFF, #FFFFFF);*/
+							background-repeat: no-repeat;
+							font-family: Cambria;
+						}
+						
+						body
+						{
+							margin: 0;
+							padding: 0;
+						}
+
+						.caja
+						{
+							background-color: #FFFFFF;
+							border: 1px solid silver;
+							box-shadow: 1px 5px 5px 1px #EEEEFF;
+							/*transition: box-shadow 0.5s, background-color 2s;*/
+														display: flex;
+							flex-direction: column;
+							align-items: center;
+							border-radius: 5px;
+							/*padding: 1%;*/
+						}
+
+						.caja:hover
+						{
+							box-shadow: 1px 10px 10px 1px #DDDDEE; 
+							/*background-color: #00000010;*/
+						}
+						.caja:active {background-color: #0000001E;}
+
+						.nombreDeLaCategoria
+						{
+							font-size: 25px;
+							margin: 0px;
+						}
+
+						header 
+						{
+							margin-top: 10px;
+						}
+
+						#menu
+						{
+							align-content: center;
+							background-color: #000000;
+							border-top: 1px solid #0000FF;
+							border-bottom: 1px solid #FF0000;
+						}
+
+						ul
+						{
+							display: flex;
+							flex-direction: row;
+							list-style-type: none;
+							justify-content: space-evenly;
+							margin: 5px 5px;
+						}
+
+						li a
+						{
+							text-decoration: none;
+							color: #CCCCCC;
+						}
+
+						li a:hover
+						{
+							color: #FFFFFF;
+						}
+
+						.logo
+						{
+							margin-left: 10px;
+							display: inline-block;
+							border-radius: 10px;
+						}
+						
+						.image
+						{
+							width: 250px;
+							height: 250px;
+							border-radius: 5px 5px 0px 0px;
+						}
+
+						.icon
+						{
+							width: 50px;
+							height: 50px;
+							margin: 5px;
+						}
+						
+						.icon-small
+						{
+							width: 30px;
+							height: 30px;
+						}
+
+						#container
+						{
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: space-evenly;
+							/*margin-top: 5%;*/
+							/*justify-content: center;
+							align-items: center;
+							flex-direction: column;*/
+						}
+
+						select {display: block;}
+
+						input[type=number]
+						{
+							width: 40px;
+							display: inline-block;
+						}
+
+						input[type=number]::-webkit-inner-spin-button, 
+						input[type=number]::-webkit-outer-spin-button
+						{ 
+							-webkit-appearance: none;
+							-moz-appearance: none;
+							appearance: none;
+							margin: 0; 
+						}
+						input[type=number] {-moz-appearance:textfield;}
+
+						.filterTitle {margin-bottom: 0px;}
+
+						#Parrafo
+						{
+							display: flex;
+							justify-content: center;
+						}
+						
+						/* Tablas:																							*/
+						table, th, td {border-collapse: collapse;}
+						
+						th, td
+						{
+							border: 1px solid #000000;
+							padding: 5px;
+						}
+						
+						tr:hover {background-color: #EEF0F8;}
+						
+/* Inicio de sesión:																										*/
+						#Caja_InicioSesion
+						{
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							margin-top:5%;
+						}
+
+						#Formulario
+						{
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+						}
+
+						button
+						{
+						   margin: 2%;
+						   padding: 0.5% 2.5%;
+						}
+						.hidden
+						{
+							display: none;
+							
+						}
+						.error
+						{
+							color:red;
+						}
+
+/* Administración:																											*/
+						#FormularioCategoria
+						{
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							margin-top:3%;
+							margin-left: 30%;
+							margin-right: 30%;
+							padding-bottom: 2%;
+						}
+						
+						label
+						{
+							margin-top: 2%;
+						}
+						
+						#Boton
+						{
+							margin-top: 4%;
+							padding: 1%;
+							padding-left: 5%;
+							padding-right: 5%;
+						}
+						
+						#Bien
+						{
+							color:green;   
+						}
+						
+						#Mal
+						{
+							color:red;
+						}
+						
+						#Tabla_Categorias
+						{
+							display: flex;
+							flex-direction: column;
+							margin-top:5%;
+						}
+						
+						#FormularioProductos
+						{
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+						}
+						
+						#Formulario_Categorias
+						{
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							margin-bottom: 5%;
+						}
+
+						#cuenta
+						{
+							padding: 1%;
+							display: flex;
+							flex-direction: column;
+							align-items: end;
+						}
+
+						button
+						{
+							background-color: rgb(46, 46, 46);
+							border: none;
+							border-radius: 5px;
+							color: #FFFFFF;
+							box-shadow: 1px 5px 5px 1px #EEEEFF;
+						}
+
+						button:hover
+						{
+							box-shadow: 1px 5px 5px 1px #DDDDEE; 
+						}
+						
+						#tablaProductos > table > tbody > tr > td > input
+						{
+							border: none;
+							margin: 0px;
+							padding: 0px;
+							width: 100%;
+							height: 25px;
+						}
+						
+						#tablaProductos > table > tbody > tr > td:has(input)
+						{
+							padding: 1px;
+						}

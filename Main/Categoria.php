@@ -1,12 +1,18 @@
 <?php
-require "AccessDB.php";
-// Recoge el ID de la categoría seleccionada.
-if(isset($_GET['ID'])) { // Cambiado 'ID' a 'id'
-    $categoriaID = $_GET['ID']; // Cambiado 'ID' a 'id'
-} else {
-    echo "No ha llegado el ID";
-}
+	$_POST['Tipo'] = '';
+	require "AccessDB.php";
+	
+	// Recoge el ID de la categoría seleccionada.
+	if(isset($_GET['ID'])) // Cambiado 'ID' a 'id'
+	{
+		$categoriaID = $_GET['ID']; // Cambiado 'ID' a 'id'
+	}
+	else
+	{
+		echo "No ha llegado el ID";
+	}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +21,6 @@ if(isset($_GET['ID'])) { // Cambiado 'ID' a 'id'
     <link rel="icon" type="image/x-icon" href="img/logo16.png">
     <link rel="stylesheet" href="CSSindex.css">
     <title>Document</title>
-    <script>
-        function SeleccionarProducto(Nombre)
-        {
-            location.href ="Producto.php?Nombre=" + Nombre;
-        }
-    </script>
 </head>
 <body>
     <header>    
@@ -42,11 +42,11 @@ if(isset($_GET['ID'])) { // Cambiado 'ID' a 'id'
     </header>
     <div id="Categorias">
         <?php
-            $resultado = LeerProductoPorCategoria($categoriaID, $server, $dbname, $usuario, $password, $productos);
+            $resultado = LeerProductoPorCategoria($categoriaID, $productos);
             while($row = $resultado->fetch_assoc())
             {
                 echo "<div id='Caja' onclick='SeleccionarProducto(\"".$row['Nombre']."\")'>";
-                echo "<img id='Imagen' src='data:image/jpeg;base64," . $row['Imagen'] . "'width=250px height=200px alt='Producto'>";
+                echo "<img id='Imagen' src='data:image/png;base64," . $row['Imagen'] . "'width=250px height=200px alt='Producto'>";
                 echo "<p id='Nombre_Categoria'>".$row["Nombre"]."</p>";
                 echo "<h2 id='Precio'>".$row["Precio"]."€</h2>";
                 echo "</div>";
