@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#test
+			{
+				position: relative;
+				animation-name: example;
+				animation-duration: 10s;
+			}
+			
+			@keyframes example
+			{
+				0% {left: 0px;}
+				50% {left: 1000px;}
+				100% {left: 0px;}
+			}
+			
+			#testDiv
+			{
+				display: inline-block;
+				background-image: 1.png;
+				
+				-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 13 13"><style>text { transform-origin:center; animation:change 5s linear infinite;} @keyframes change { from {transform:rotateY(0deg)} to { transform:rotateY(360deg); }}<\/style><text  x="0" y="12" font-family="Arial, Helvetica, sans-serif" transform-origin="center">C</text></svg>') center/contain;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="testDiv">
+			<image id="test" name="test" src="1.png">
+			
+			<svg width="2766" height="250" xmlns="http://www.w3.org/2000/svg" style="outline: 1px solid red">
+				<defs>
+					<mask id="text-mask-1" x="0" y="0" width="2766" height="250" >
+						<text x="30" y="240" font-family="Helvetica" font-weight="bold" font-size="20em" fill="#999">Test mask</text>
+					</mask>
+				</defs>
+			</svg>
+		</div>
+
+		<svg width="2766" height="250" xmlns="http://www.w3.org/2000/svg" style="outline: 1px solid red">
+			<defs>
+				<mask id="text-mask-1" x="0" y="0" width="2766" height="250" >
+					<text x="30" y="240" font-family="Helvetica" font-weight="bold" font-size="20em" fill="#999">Test mask</text>
+				</mask>
+			</defs>
+			
+			<image width="2766" height="1836" href="1.png" mask="url(#text-mask-1)"/>
+		</svg>
+	</body>
+</html>

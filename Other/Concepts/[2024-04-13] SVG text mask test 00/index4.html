@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#test
+			{
+				position: relative;
+				animation-name: example;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes example
+			{
+				0% {left: 0px;}
+				50% {left: 1000px;}
+				100% {left: 0px;}
+			}
+			
+			#testDiv
+			{
+				display: inline-block;
+				
+				-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="250px" width="1500px"><text id="mask" x="0" y="180" font-family="Cambria, sans-serif" font-size="250">Test masking</text></svg>');
+			}
+		</style>
+	</head>
+	<body>
+		<div id="testDiv">
+			<image id="test" src="1.png" style="height: 250px; width: 1500px; object-fit: cover;">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#cf img
+			{
+				-webkit-transition: opacity 1s ease-in-out;
+				-moz-transition: opacity 1s ease-in-out;
+				-o-transition: opacity 1s ease-in-out;
+				transition: opacity 1s ease-in-out;
+				
+				animation-name: example2;
+				animation-duration: 10s;
+				animation-iteration-count: infinite;
+				animation-delay: 7.5s;
+							
+				height: 250px;
+				width: 1500px;
+				position: absolute;
+				left: 0;
+				object-fit: cover;
+			}
+
+			@keyframes example2
+			{
+				0% {opacity: 1}
+				50% {opacity: 0}
+				100% {opacity: 1}
+			}
+			
+			.testDiv
+			{
+				height: 250px;
+				width: 1500px;
+				-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="250px" width="1500px"><text id="mask" x="0" y="180" font-family="Cambria, sans-serif" font-size="250">Test masking</text></svg>');
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="cf" class="testDiv">
+			<img src="1.png" style="z-index: 100">
+			<img src="2.jpg" style="z-index: 99; animation-delay: 2.5s;">
+			<img src="3.png" style="z-index: 98; animation-delay: 2.5s;">
+			<img src="4.png" style="z-index: 97; opacity: 1; animation-delay: 2.5s;">
+		</div>
+	</body>
+</html>
