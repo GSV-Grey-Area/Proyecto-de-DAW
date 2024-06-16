@@ -70,7 +70,7 @@
     </p>
 
     </div>
-    <footer>
+    <footer id="Pie">
 		<p>Proyecto de desarrollo de aplicaciones "web"</p>
 	</footer>
 </body>

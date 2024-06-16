@@ -86,13 +86,14 @@
 					</div>
 					
 					<div id="input-container"></div>
-					<button id="Boton" type="button" onclick="AddInput()">Añadir columna</button>
+					<button id="Boton" type="button" onclick="addInput()">Añadir columna</button>
+					<button id="Boton" type="button" onclick="deleteLastInput()">Eliminar columna</button>
 					<button id="Boton" type="submit">Crear</button>
 				</form>
 			</div>
 		</div>
 		
-		<footer>
+		<footer id="PieAdmin">
 			<p>Proyecto de desarrollo de aplicaciones "web"</p>
 		</footer>
     </body>

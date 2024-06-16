@@ -113,10 +113,7 @@
 							display: flex;
 							flex-wrap: wrap;
 							justify-content: space-evenly;
-							/*margin-top: 5%;*/
-							/*justify-content: center;
-							align-items: center;
-							flex-direction: column;*/
+							margin-bottom: 5%;
 						}
 
 						select {display: block;}
@@ -148,7 +145,7 @@
 						
 						.greyed-out {color: #CCCCCC;}
 						
-						/* Tablas:																							*/
+/* Tablas:																							*/
 						table, th, td {border-collapse: collapse;}
 						
 						th, td
@@ -175,7 +172,7 @@
 							box-shadow: 1px 5px 5px 1px #DDDDEE; 
 						}
 						
-						footer
+						#Pie
 						{
 							left: 0;
 							bottom: 0;
@@ -274,6 +271,20 @@
 						#tablaProductos > table > tbody > tr > td:has(input)
 						{
 							padding: 1px;
+						}
+
+						#PieAdmin
+						{
+							left: 0;
+							bottom: 0;
+							width: 100%;
+							background-color: #000000;
+							border-top: 1px solid #00FFFF;
+							border-bottom: 1px solid #FF0000;
+							color: #CCCCCC;
+							display: flex;
+							justify-content: center;
+							align-items: center;
 						}
 /*Información*/			
 						#Contenido

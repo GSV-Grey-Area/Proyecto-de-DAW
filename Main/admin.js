@@ -25,34 +25,26 @@ function EliminarCategoria(Nombre)
 
 var inputIDs = [];
 
-function InsertarProducto()
-{
+function InsertarProducto() {
 	var formData = new FormData();
 	var isValid = true; // Variable para verificar si todos los campos están llenos.
 
-	inputIDs.forEach
-	(
-		function(id, index)
-		{
-			var inputElement = document.getElementById(id);
-			if (inputElement)
-			{
-				if (index > 0 && inputElement.value.trim() === '')  // Comprueba si el campo está vacío, omitiendo el primer input.
-				{
-					isValid = false;
-					console.warn('El campo con ID ' + id + ' está vacío.');
-				}
-				formData.append(id, inputElement.value);
-			}
-			else
-			{
-				console.warn('El elemento con ID "' + id + '" no existe.');
-			}
-		}
-	);
+	
 
-	if (!isValid)
-	{
+	inputIDs.forEach(function(id, index) {
+	var inputElement = document.getElementById(id);
+	if (inputElement) { // Comprueba si el elemento existe.
+		if (index > 0 && inputElement.value.trim() === '') { // Comprueba si el campo está vacío, omitiendo el primer input.
+				isValid = false;
+			   console.warn('El campo con ID ' + id + ' está vacío.');
+		}
+		formData.append(id, inputElement.value);
+	} else {
+		console.warn('El elemento con ID "' + id + '" no existe.');
+	}
+	});
+
+	if (!isValid) {
 		alert('Por favor, complete todos los campos obligatorios.');
 		return;
 	}
@@ -60,17 +52,21 @@ function InsertarProducto()
 	formData.append('Tipo', document.getElementById('Insertar_Producto').value);
 	formData.append('nombreTabla', document.getElementById('nombreTablaHidden').value);
 
-	$.ajax
-	({
+	$.ajax({
 		url: 'AccessDB.php',
 		type: 'POST',
 		processData: false,
 		contentType: false,
 		data: formData,
-		success: function(data) {location.reload();},
-		error: function(xhr, status, error) {console.error("Error en la solicitud AJAX:", error);}
+		success: function(data) {
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			console.error("Error en la solicitud AJAX:", error);
+		}
 	});
-}
+	}
+
 
 function EliminarProducto(nombre, producto)
 {
@@ -208,7 +204,7 @@ $(document).ready
 						celdaImagen.appendChild(imagen);
 						hilera.appendChild(celdaImagen);
 
-						hilera.onclick = (function(nombre, nombreTabla) {
+						celdaImagen.onclick = (function(nombre, nombreTabla) {
 						return function() {
 							EliminarProducto(nombre, nombreTabla);
 						};
@@ -272,72 +268,68 @@ $(document).ready
 );
 
 function validateForm()
-{
-	const tableName = document.getElementById('tableName').value;
-	const image1 = document.getElementById('image1').value;
+			{
+				// Obtiene los campos del formulario:
+				const tableName = document.getElementById('tableName').value;
+				const image1 = document.getElementById('image1').value;
 
-	// Verifica si los campos iniciales están vacíos:
-	var vacios = 0;
-	if (!tableName || !image1) {vacios++;}
+				var vacios = 0;
 
-	// Obtiene todos los "inputs" dinámicos y verifica si están vacíos:
-	const columnNames = document.querySelectorAll('input[name="columnNames[]"]');
-	for (const input of columnNames)
-	{
-		if (!input.value) {vacios++;}
-	}
+				// Verifica si los campos iniciales están vacíos:
+				if (!tableName) {vacios++;}
+				if (!image1) {vacios++;}
 
-	if (vacios != 0)
-	{
-		alert("Formulario de categorías vacío. No se puede insertar.");
-		return false;
-	}
-	
-	return true;
-}
+				// Obtiene todos los "inputs" dinámicos y verifica si están vacíos:
+				const columnNames = document.querySelectorAll('input[name="columnNames[]"]');
+				for (const input of columnNames)
+				{
+					if (!input.value) {vacios++;}
+				}
 
-/*function EliminarUsuario(ID)
-{
-	$.ajax
-	({
-		type: "POST",
-		url: "AccessDB.php",
-		data: {Tipo: "EliminarUsuario", ID: ID},
-		dataType: "json",
-		success: function(datos) {location.reload();},
-		error: function(xhr, status, error) {console.error("Error en la solicitud AJAX:", error);}
-	});
-}*/
+				if (vacios != 0)
+				{
+					alert("Formulario de categorías vacío. No se puede insertar.");
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+			}
 
-function AddInput()
+
+function addInput()
 {
 	const container = document.createElement('div');
 	container.className = 'input-select-pair';
-
 	const input = document.createElement('input');
 	input.type = 'text';
 	input.name = 'columnNames[]';
 	input.placeholder = 'Ingrese nombre de la columna';
-
 	const select = document.createElement('select');
 	select.name = 'columnTypes[]';
-
 	const options =
 	[
 		{value: 'FLOAT', text: 'Real'},
 		{value: 'VARCHAR(255)', text: 'Texto'},
 		{value: 'INT', text: 'Número entero'}
 	];
-
 	options.forEach(optionData => {
 		const option = document.createElement('option');
 		option.value = optionData.value;
 		option.textContent = optionData.text;
 		select.appendChild(option);
 	});
-
 	container.appendChild(input);
 	container.appendChild(select);
-
 	document.getElementById('input-container').appendChild(container);
+}
+			
+function deleteLastInput() {
+	const container = document.getElementById('input-container');
+	if (container.lastChild) {
+		container.removeChild(container.lastChild);
+	} else {
+		alert('No hay más entradas para eliminar.');
+	}
 }

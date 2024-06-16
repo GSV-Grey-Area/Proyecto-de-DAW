@@ -94,7 +94,7 @@
 
 			<button type="button" onclick="IniciarSesion()">Iniciar Sesión</button>
 		</div>
-		<footer>
+		<footer id="Pie">
 			<p>Proyecto de desarrollo de aplicaciones "web"</p>
 		</footer> 
 	</body>
