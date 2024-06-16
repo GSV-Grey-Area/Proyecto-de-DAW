@@ -8,7 +8,8 @@ function EliminarCategoria(Nombre)
 		form_data.append('Tipo', 'Eliminar_Categoria');
 		form_data.append('Eliminar_Categoria', Nombre);
 
-		$.ajax({
+		$.ajax
+		({
 			url: 'AccessDB.php',
 			type: 'POST',
 			processData: false,
@@ -25,26 +26,34 @@ function EliminarCategoria(Nombre)
 
 var inputIDs = [];
 
-function InsertarProducto() {
+function InsertarProducto()
+{
 	var formData = new FormData();
 	var isValid = true; // Variable para verificar si todos los campos están llenos.
-
 	
-
-	inputIDs.forEach(function(id, index) {
-	var inputElement = document.getElementById(id);
-	if (inputElement) { // Comprueba si el elemento existe.
-		if (index > 0 && inputElement.value.trim() === '') { // Comprueba si el campo está vacío, omitiendo el primer input.
-				isValid = false;
-			   console.warn('El campo con ID ' + id + ' está vacío.');
+	inputIDs.forEach
+	(
+		function(id, index)
+		{
+			var inputElement = document.getElementById(id);
+			if (inputElement)
+			{
+				if (index > 0 && inputElement.value.trim() === '')
+				{ // Comprueba si el campo está vacío, omitiendo el primer input.
+					isValid = false;
+					console.warn('El campo con ID ' + id + ' está vacío.');
+				}
+				formData.append(id, inputElement.value);
+			}
+			else
+			{
+				console.warn('El elemento con ID "' + id + '" no existe.');
+			}
 		}
-		formData.append(id, inputElement.value);
-	} else {
-		console.warn('El elemento con ID "' + id + '" no existe.');
-	}
-	});
+	);
 
-	if (!isValid) {
+	if (!isValid)
+	{
 		alert('Por favor, complete todos los campos obligatorios.');
 		return;
 	}
@@ -52,20 +61,17 @@ function InsertarProducto() {
 	formData.append('Tipo', document.getElementById('Insertar_Producto').value);
 	formData.append('nombreTabla', document.getElementById('nombreTablaHidden').value);
 
-	$.ajax({
+	$.ajax
+	({
 		url: 'AccessDB.php',
 		type: 'POST',
 		processData: false,
 		contentType: false,
 		data: formData,
-		success: function(data) {
-			location.reload();
-		},
-		error: function(xhr, status, error) {
-			console.error("Error en la solicitud AJAX:", error);
-		}
+		success: function(data) {location.reload();},
+		error: function(xhr, status, error) {console.error("Error en la solicitud AJAX:", error);}
 	});
-	}
+}
 
 
 function EliminarProducto(nombre, producto)
@@ -78,7 +84,7 @@ function EliminarProducto(nombre, producto)
 		({
 			type: "POST",
 			url: "AccessDB.php",
-			data: {Tipo: "EliminarProducto",categoria: producto, nombre: nombre},
+			data: {Tipo: "EliminarProducto", categoria: producto, nombre: nombre},
 			dataType: "json",
 			success: function(datos)
 			{
@@ -204,11 +210,16 @@ $(document).ready
 						celdaImagen.appendChild(imagen);
 						hilera.appendChild(celdaImagen);
 
-						celdaImagen.onclick = (function(nombre, nombreTabla) {
-						return function() {
-							EliminarProducto(nombre, nombreTabla);
-						};
-						})(nombreProducto, nombreTabla);
+						celdaImagen.onclick =
+						(
+							function(nombre, nombreTabla)
+							{
+								return function()
+								{
+									EliminarProducto(nombre, nombreTabla);
+								};
+							}
+						)(nombreProducto, nombreTabla);
 
 						tblBody.appendChild(hilera);
 					}
@@ -268,35 +279,30 @@ $(document).ready
 );
 
 function validateForm()
-			{
-				// Obtiene los campos del formulario:
-				const tableName = document.getElementById('tableName').value;
-				const image1 = document.getElementById('image1').value;
+{
+	// Obtiene los campos del formulario:
+	const tableName = document.getElementById('tableName').value;
+	const image1 = document.getElementById('image1').value;
+	
+	// Verifica si los campos iniciales están vacíos:
+	var vacios = 0;
+	if (!tableName || !image1) {vacios++;}
 
-				var vacios = 0;
+	// Obtiene todos los "inputs" dinámicos y verifica si están vacíos:
+	const columnNames = document.querySelectorAll('input[name="columnNames[]"]');
+	for (const input of columnNames)
+	{
+		if (!input.value) {vacios++;}
+	}
 
-				// Verifica si los campos iniciales están vacíos:
-				if (!tableName) {vacios++;}
-				if (!image1) {vacios++;}
+	if (vacios != 0)
+	{
+		alert("Formulario de categorías vacío. No se puede insertar.");
+		return false;
+	}
 
-				// Obtiene todos los "inputs" dinámicos y verifica si están vacíos:
-				const columnNames = document.querySelectorAll('input[name="columnNames[]"]');
-				for (const input of columnNames)
-				{
-					if (!input.value) {vacios++;}
-				}
-
-				if (vacios != 0)
-				{
-					alert("Formulario de categorías vacío. No se puede insertar.");
-					return false;
-				}
-				else
-				{
-					return true;
-				}
-			}
-
+	return true;
+}
 
 function addInput()
 {
@@ -325,11 +331,15 @@ function addInput()
 	document.getElementById('input-container').appendChild(container);
 }
 			
-function deleteLastInput() {
+function deleteLastInput()
+{
 	const container = document.getElementById('input-container');
-	if (container.lastChild) {
+	if (container.lastChild)
+	{
 		container.removeChild(container.lastChild);
-	} else {
+	}
+	else
+	{
 		alert('No hay más entradas para eliminar.');
 	}
 }

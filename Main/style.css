@@ -1,4 +1,4 @@
-/* General:																													*/
+/*General:																							*/
 						@media screen and (max-width: 600px)
 						{
 							#Menu
@@ -28,7 +28,7 @@
 							border: 1px solid silver;
 							box-shadow: 1px 5px 5px 1px #EEEEFF;
 							/*transition: box-shadow 0.5s, background-color 2s;*/
-														display: flex;
+							display: flex;
 							flex-direction: column;
 							align-items: center;
 							border-radius: 5px;
@@ -187,7 +187,7 @@
 							align-items: center;
 						}
 						
-/* Inicio de sesión:																										*/
+/* Inicio de sesión:																				*/
 						#Caja_InicioSesion
 						{
 							display: flex;
@@ -206,7 +206,7 @@
 						.hidden {display: none;}				
 						.error {color: #FF0000;}
 
-/* Administración:																											*/
+/* Administración:																					*/
 						#FormularioCategoria
 						{
 							display: flex;
@@ -286,7 +286,8 @@
 							justify-content: center;
 							align-items: center;
 						}
-/*Información*/			
+
+/* Información:																						*/			
 						#Contenido
 						{
 							margin-top:5%;

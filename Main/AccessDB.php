@@ -26,6 +26,7 @@
 		mysqli_close($conn);
 		return $resultado;
 	}
+	
 	if(isset($_POST['Tipo']))
 	{
 		$tipo = $_POST['Tipo'];
