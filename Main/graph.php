@@ -3,7 +3,7 @@
 	$q = $_GET['q']; // intval
 	$innerWidth = $_GET['innerWidth'] * 0.8;
 	$innerHeight = $_GET['innerHeight'] * 0.6;
-	
+		
 	// Possibly a matrix receiving all values... not sure...
 
 	//// DATABASE SECTION ////
@@ -17,6 +17,7 @@
 	$select1 = mysqli_query($con, $sql); // X axis columns
 	$select2 = mysqli_query($con, $sql); // Y axis columns
 	$select3 = mysqli_query($con, $sql); // For the filters.
+	$select4 = mysqli_query($con, $sql); // Filter reloading...
 
 	//// RENDERING SECTION ////
 	$margin = 100;
@@ -68,18 +69,35 @@
 	$output .= 'XXXXXXXXX';
 	
 	// Data boundaries:
-	$xDataMin = mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $xAxis . ') FROM ' . $q . ';'))[0];
-	$xDataMax = mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $xAxis . ') FROM ' . $q))[0];
-	$yDataMin = mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $yAxis . ') FROM ' . $q))[0];
-	$yDataMax = mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $yAxis . ') FROM ' . $q))[0];
+	$i = 0;
+	$precise = 'WHERE ';
+	while($row = mysqli_fetch_array($select4))
+	{
+		if ($i > 2)
+		{
+			if ($i != 3){$precise .= ' AND ';}
+	
+			$dataMin = $_GET[$row['Field'] . 'Min'] ?? mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $row['Field'] . ') FROM ' . $q))[0];
+			$dataMax = $_GET[$row['Field'] . 'Max'] ?? mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $row['Field'] . ') FROM ' . $q))[0];
+			
+			$precise .= ' ' . $row['Field'] . ' BETWEEN ' . $dataMin . ' AND ' . $dataMax;
+		}
+
+		$i++;
+	}
+	
+	$xDataMin = mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $xAxis . ') FROM ' . $q . ' ' . $precise . ';'))[0];
+	$xDataMax = mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $xAxis . ') FROM ' . $q . ' ' . $precise))[0];
+	$yDataMin = mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $yAxis . ') FROM ' . $q . ' ' . $precise))[0];
+	$yDataMax = mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $yAxis . ') FROM ' . $q . ' ' . $precise))[0];
 	$xInterval = $xDataMax - $xDataMin;
 	$yInterval = $yDataMax - $yDataMin;
 	$xRatio = ($innerWidth - $margin)/($xInterval);
 	$yRatio = ($innerHeight - $margin - $xm)/($yInterval);
 	
 	// Data obtention:
-	$result = mysqli_query($con, 'SELECT * FROM ' . $q . ';'); // WHERE id = '".$q."'";
-	$result2 = mysqli_query($con, 'SELECT * FROM ' . $q . ';');
+	$result = mysqli_query($con, 'SELECT * FROM ' . $q . ' ' . $precise . ';'); // WHERE id = '".$q."'";
+	$result2 = mysqli_query($con, 'SELECT * FROM ' . $q . ' ' . $precise . ';');
 	
 	// Graph:
 	// Parameters:
@@ -189,8 +207,8 @@
 			$title = str_replace('_', ', ', $row['Field']);
 			$output .= '<p class="filterTitle">' . $title . ':</p>';
 			
-			$dataMin = mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $row['Field'] . ') FROM ' . $q))[0];
-			$dataMax = mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $row['Field'] . ') FROM ' . $q))[0];
+			$dataMin = $_GET[$row['Field'] . 'Min'] ?? mysqli_fetch_array(mysqli_query($con, 'SELECT MIN(' . $row['Field'] . ') FROM ' . $q))[0];
+			$dataMax = $_GET[$row['Field'] . 'Max'] ?? mysqli_fetch_array(mysqli_query($con, 'SELECT MAX(' . $row['Field'] . ') FROM ' . $q))[0];
 			
 			$output .= '<input type="number" class="formed left" id="x" name="' . $row['Field'] . 'Min" value="' . $dataMin . '">-';
 			$output .= '<input type="number" class="formed right" id="x" name="' . $row['Field'] . 'Max" value="' . $dataMax . '">';
@@ -199,7 +217,7 @@
 		$i++;
 	}
 	
-	$output .= '<br><br><button>Filtrar</button>';
+	$output .= '<br><br><button id="filter">Filtrar</button>';
 	$output .= 'XXXXXXXXX';
 	
 	// List:

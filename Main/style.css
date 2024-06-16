@@ -146,10 +146,7 @@
 							justify-content: center;
 						}
 						
-						.greyed-out
-						{
-							color: #CCCCCC;
-						}
+						.greyed-out {color: #CCCCCC;}
 						
 						/* Tablas:																							*/
 						table, th, td {border-collapse: collapse;}
@@ -161,6 +158,22 @@
 						}
 						
 						tr:hover {background-color: #EEF0F8;}
+						
+						button
+						{
+							background-color: rgb(46, 46, 46);
+							border: none;
+							border-radius: 5px;
+							color: #FFFFFF;
+							box-shadow: 1px 5px 5px 1px #EEEEFF;
+							margin: 2%;
+							padding: 5px 10px;
+						}
+
+						button:hover
+						{
+							box-shadow: 1px 5px 5px 1px #DDDDEE; 
+						}
 						
 						footer
 						{
@@ -193,20 +206,8 @@
 							align-items: center;
 						}
 
-						button
-						{
-						   margin: 2%;
-						   padding: 0.5% 2.5%;
-						}
-						.hidden
-						{
-							display: none;
-							
-						}
-						.error
-						{
-							color:red;
-						}
+						.hidden {display: none;}				
+						.error {color: #FF0000;}
 
 /* Administración:																											*/
 						#FormularioCategoria
@@ -226,23 +227,8 @@
 							margin-top: 2%;
 						}
 						
-						#Boton
-						{
-							margin-top: 4%;
-							padding: 1%;
-							padding-left: 5%;
-							padding-right: 5%;
-						}
-						
-						#Bien
-						{
-							color:green;   
-						}
-						
-						#Mal
-						{
-							color:red;
-						}
+						#Bien {color: #00FF00;}
+						#Mal {color: #FF0000;}
 						
 						#Tabla_Categorias
 						{
@@ -275,20 +261,6 @@
 							flex-direction: column;
 							align-items: end;
 						}
-
-						button
-						{
-							background-color: rgb(46, 46, 46);
-							border: none;
-							border-radius: 5px;
-							color: #FFFFFF;
-							box-shadow: 1px 5px 5px 1px #EEEEFF;
-						}
-
-						button:hover
-						{
-							box-shadow: 1px 5px 5px 1px #DDDDEE; 
-						}
 						
 						#tablaProductos > table > tbody > tr > td > input
 						{
@@ -302,4 +274,11 @@
 						#tablaProductos > table > tbody > tr > td:has(input)
 						{
 							padding: 1px;
+						}
+/*Información*/			
+						#Contenido
+						{
+							margin-top:5%;
+							margin-right:5%;
+							margin-left:5%;
 						}
